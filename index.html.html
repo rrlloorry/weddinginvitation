@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>김민준 ♥ 이서연 결혼합니다</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+KR:wght@300;400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8D5A3;
+    --gold-dark: #9A7A2E;
+    --cream: #FDF8F0;
+    --cream-dark: #F3EAD8;
+    --brown: #3D2B1F;
+    --brown-light: #6B4F3A;
+    --blush: #F0D6CB;
+    --rose: #C4806A;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--brown);
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 300;
+    max-width: 480px;
+    margin: 0 auto;
+    overflow-x: hidden;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(160deg, #FDF4E7 0%, #FAF0E0 50%, #F5E8D3 100%);
+    overflow: hidden;
+    padding: 60px 24px 80px;
+  }
+
+  .cover-floral-top {
+    position: absolute;
+    top: -10px; left: -10px;
+    width: 200px; opacity: 0.55;
+    animation: fadeIn 1.8s ease forwards;
+  }
+  .cover-floral-bottom {
+    position: absolute;
+    bottom: -10px; right: -10px;
+    width: 200px; opacity: 0.55;
+    transform: rotate(180deg);
+    animation: fadeIn 1.8s ease forwards;
+  }
+
+  .cover-line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, var(--gold));
+    margin-bottom: 20px;
+    animation: slideDown 1.5s ease forwards;
+  }
+
+  .cover-label {
+    font-family: 'EB Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 6px;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    animation: fadeUp 1.5s 0.3s ease both;
+  }
+
+  .cover-names {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    font-weight: 300;
+    color: var(--brown);
+    line-height: 1.1;
+    text-align: center;
+    letter-spacing: 2px;
+    animation: fadeUp 1.5s 0.5s ease both;
+  }
+
+  .cover-heart {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    color: var(--gold);
+    margin: 8px 0;
+    animation: fadeUp 1.5s 0.7s ease both;
+  }
+
+  .cover-names-kr {
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 8px;
+    color: var(--brown-light);
+    margin-top: 16px;
+    animation: fadeUp 1.5s 0.9s ease both;
+  }
+
+  .cover-divider {
+    display: flex; align-items: center; gap: 16px;
+    margin: 32px 0;
+    width: 200px;
+    animation: fadeUp 1.5s 1.0s ease both;
+  }
+  .cover-divider::before, .cover-divider::after {
+    content: ''; flex: 1; height: 1px; background: var(--gold-light);
+  }
+  .cover-divider-icon { color: var(--gold); font-size: 14px; }
+
+  .cover-date {
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--brown-light);
+    text-align: center;
+    line-height: 2;
+    animation: fadeUp 1.5s 1.1s ease both;
+  }
+
+  .cover-scroll {
+    position: absolute;
+    bottom: 30px;
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    color: var(--gold-dark); font-size: 10px; letter-spacing: 3px;
+    animation: bounce 2s 2s infinite;
+    font-family: 'EB Garamond', serif;
+  }
+  .cover-scroll-arrow { font-size: 16px; }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 64px 28px;
+    position: relative;
+  }
+  section:nth-child(even) { background: #FEFBF6; }
+
+  .section-label {
+    font-family: 'EB Garamond', serif;
+    font-size: 10px;
+    letter-spacing: 6px;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 20px;
+    opacity: 0;
+    transition: opacity 0.8s, transform 0.8s;
+    transform: translateY(16px);
+  }
+  .section-label.visible { opacity: 1; transform: none; }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--brown);
+    text-align: center;
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+
+  .gold-ornament {
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    margin: 20px 0;
+  }
+  .gold-ornament-line { height: 1px; width: 48px; background: var(--gold-light); }
+  .gold-ornament-diamond {
+    width: 6px; height: 6px;
+    background: var(--gold);
+    transform: rotate(45deg);
+  }
+
+  /* ── INVITATION ── */
+  .invitation-text {
+    font-size: 14px;
+    line-height: 2.2;
+    color: var(--brown-light);
+    text-align: center;
+    word-break: keep-all;
+    opacity: 0;
+    transition: opacity 1s 0.2s, transform 1s 0.2s;
+    transform: translateY(20px);
+  }
+  .invitation-text.visible { opacity: 1; transform: none; }
+
+  .invitation-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: var(--gold-dark);
+    text-align: center;
+    line-height: 1.7;
+    margin: 32px 0;
+    opacity: 0;
+    transition: opacity 1s 0.4s, transform 1s 0.4s;
+    transform: translateY(20px);
+  }
+  .invitation-quote.visible { opacity: 1; transform: none; }
+
+  /* ── COUPLE ── */
+  .couple-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .couple-card {
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.8s, transform 0.8s;
+    transform: translateY(20px);
+  }
+  .couple-card.visible { opacity: 1; transform: none; }
+  .couple-card:nth-child(2) { transition-delay: 0.2s; }
+
+  .couple-role {
+    font-family: 'EB Garamond', serif;
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .couple-name-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--brown);
+    line-height: 1;
+  }
+
+  .couple-name-kr {
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    color: var(--brown-light);
+    margin: 8px 0 14px;
+  }
+
+  .couple-family {
+    font-size: 12px;
+    color: #9C8070;
+    line-height: 2;
+    letter-spacing: 1px;
+  }
+
+  .couple-separator {
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    color: var(--gold);
+  }
+
+  /* ── DATE & VENUE ── */
+  .date-box {
+    background: var(--cream-dark);
+    border: 1px solid var(--gold-light);
+    border-radius: 2px;
+    padding: 36px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.8s, transform 0.8s;
+    transform: translateY(20px);
+  }
+  .date-box.visible { opacity: 1; transform: none; }
+  .date-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+
+  .date-main {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    color: var(--brown);
+    line-height: 1;
+    letter-spacing: 4px;
+  }
+
+  .date-sub {
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--brown-light);
+    margin-top: 10px;
+    line-height: 2;
+  }
+
+  .venue-info {
+    margin-top: 36px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.8s 0.2s, transform 0.8s 0.2s;
+    transform: translateY(20px);
+  }
+  .venue-info.visible { opacity: 1; transform: none; }
+
+  .venue-name {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--brown);
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .venue-hall {
+    font-size: 13px;
+    color: var(--gold-dark);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+
+  .venue-address {
+    font-size: 12px;
+    color: #9C8070;
+    line-height: 2;
+  }
+
+  .map-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 12px 28px;
+    border: 1px solid var(--gold);
+    border-radius: 1px;
+    background: transparent;
+    color: var(--gold-dark);
+    font-family: 'Noto Serif KR', serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.3s, color 0.3s;
+  }
+  .map-btn:hover {
+    background: var(--gold);
+    color: #fff;
+  }
+
+  /* ── COUNTDOWN ── */
+  .countdown-wrap {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin: 32px 0;
+    opacity: 0;
+    transition: opacity 0.8s 0.3s;
+  }
+  .countdown-wrap.visible { opacity: 1; }
+
+  .countdown-item { text-align: center; }
+  .countdown-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 44px;
+    font-weight: 300;
+    color: var(--gold-dark);
+    line-height: 1;
+  }
+  .countdown-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #B8A090;
+    margin-top: 4px;
+  }
+  .countdown-sep {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    color: var(--gold-light);
+    align-self: flex-start;
+    padding-top: 4px;
+  }
+
+  /* ── GALLERY ── */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 5px;
+  }
+
+  .gallery-item {
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.8s, transform 0.8s;
+    transform: scale(0.97);
+    position: relative;
+  }
+  .gallery-item.visible { opacity: 1; transform: scale(1); }
+
+  .gallery-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+  .gallery-item:hover img { transform: scale(1.04); }
+
+  .gallery-item.wide {
+    grid-column: 1 / -1;
+    aspect-ratio: 16 / 9;
+  }
+  .gallery-item.square {
+    aspect-ratio: 1;
+  }
+  .gallery-item.tall {
+    grid-column: 1 / -1;
+    aspect-ratio: 4 / 3;
+  }
+
+  .gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 60%, rgba(61,43,31,0.18) 100%);
+    pointer-events: none;
+  }
+
+  /* ── ACCOUNT ── */
+  .account-tab {
+    display: flex; border-bottom: 1px solid var(--gold-light); margin-bottom: 24px;
+  }
+  .account-tab-btn {
+    flex: 1; padding: 12px; background: none; border: none;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 13px; letter-spacing: 2px;
+    color: #B8A090; cursor: pointer;
+    border-bottom: 2px solid transparent; margin-bottom: -1px;
+    transition: color 0.3s;
+  }
+  .account-tab-btn.active {
+    color: var(--brown); border-bottom-color: var(--gold);
+  }
+
+  .account-pane { display: none; }
+  .account-pane.active { display: block; }
+
+  .account-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 0; border-bottom: 1px solid rgba(201,168,76,0.15);
+    font-size: 13px;
+  }
+  .account-key { color: #9C8070; letter-spacing: 1px; }
+  .account-val { color: var(--brown); font-weight: 500; letter-spacing: 1px; }
+
+  .copy-btn {
+    background: none; border: 1px solid var(--gold-light);
+    border-radius: 1px; padding: 4px 10px;
+    font-size: 11px; color: var(--gold-dark);
+    cursor: pointer; letter-spacing: 1px;
+    font-family: 'Noto Serif KR', serif;
+    transition: background 0.2s;
+  }
+  .copy-btn:hover { background: var(--gold-light); }
+
+  .copy-success {
+    font-size: 11px; color: var(--gold-dark);
+    text-align: center; margin-top: 12px; height: 16px;
+    letter-spacing: 2px;
+  }
+
+  /* ── RSVP ── */
+  .rsvp-wrap {
+    background: var(--brown);
+    color: var(--cream);
+    padding: 56px 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .rsvp-wrap::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+  }
+
+  .rsvp-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 300;
+    color: var(--cream);
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+  }
+
+  .rsvp-sub {
+    font-size: 12px;
+    color: var(--gold-light);
+    letter-spacing: 3px;
+    margin-bottom: 32px;
+  }
+
+  .rsvp-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 32px;
+    border: 1px solid var(--gold);
+    border-radius: 1px;
+    background: transparent;
+    color: var(--gold-light);
+    font-family: 'Noto Serif KR', serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.3s;
+    margin: 6px;
+  }
+  .rsvp-btn:hover { background: rgba(201,168,76,0.15); }
+  .rsvp-btn.primary {
+    background: var(--gold);
+    color: var(--brown);
+    border-color: var(--gold);
+    font-weight: 500;
+  }
+  .rsvp-btn.primary:hover { background: var(--gold-dark); }
+
+  .rsvp-note {
+    font-size: 11px;
+    color: rgba(253,248,240,0.4);
+    margin-top: 24px;
+    line-height: 2;
+    letter-spacing: 1px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #2A1E15;
+    color: rgba(253,248,240,0.4);
+    text-align: center;
+    padding: 32px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    line-height: 2.5;
+  }
+  footer .footer-names {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: rgba(201,168,76,0.7);
+    margin-bottom: 8px;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 0.55; } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+  @keyframes slideDown { from { height: 0; opacity: 0; } to { height: 60px; opacity: 1; } }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+
+  /* ── FLORAL SVG ── */
+  .floral-divider {
+    display: flex; justify-content: center; margin: 20px 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ COVER ══ -->
+<div class="cover">
+  <!-- Floral top-left -->
+  <svg class="cover-floral-top" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g opacity="0.9">
+      <!-- Large rose -->
+      <ellipse cx="60" cy="80" rx="28" ry="22" fill="#E8C4B8" transform="rotate(-20 60 80)"/>
+      <ellipse cx="68" cy="72" rx="22" ry="18" fill="#DFB0A0" transform="rotate(-10 68 72)"/>
+      <ellipse cx="62" cy="75" rx="14" ry="11" fill="#D4A090"/>
+      <ellipse cx="60" cy="76" rx="7" ry="5.5" fill="#C4806A"/>
+      <!-- Petals -->
+      <ellipse cx="38" cy="74" rx="12" ry="7" fill="#F0D6CB" transform="rotate(-40 38 74)" opacity="0.8"/>
+      <ellipse cx="82" cy="66" rx="12" ry="7" fill="#F0D6CB" transform="rotate(20 82 66)" opacity="0.8"/>
+      <ellipse cx="50" cy="56" rx="12" ry="7" fill="#F0D6CB" transform="rotate(-70 50 56)" opacity="0.8"/>
+      <ellipse cx="70" cy="96" rx="12" ry="7" fill="#F0D6CB" transform="rotate(10 70 96)" opacity="0.8"/>
+      <!-- Small rose -->
+      <ellipse cx="120" cy="40" rx="16" ry="13" fill="#E8D5A3" transform="rotate(15 120 40)"/>
+      <ellipse cx="123" cy="37" rx="10" ry="8" fill="#D4AF37" opacity="0.6"/>
+      <ellipse cx="121" cy="39" rx="6" ry="4.5" fill="#C9A84C" opacity="0.7"/>
+      <!-- Leaves -->
+      <ellipse cx="90" cy="115" rx="22" ry="9" fill="#8FA87A" transform="rotate(-35 90 115)" opacity="0.7"/>
+      <ellipse cx="40" cy="110" rx="20" ry="8" fill="#7A9668" transform="rotate(20 40 110)" opacity="0.6"/>
+      <ellipse cx="115" cy="80" rx="18" ry="7" fill="#8FA87A" transform="rotate(-55 115 80)" opacity="0.5"/>
+      <!-- Small buds -->
+      <ellipse cx="145" cy="70" rx="8" ry="6" fill="#F0D6CB" transform="rotate(-20 145 70)"/>
+      <ellipse cx="145" cy="70" rx="4" ry="3" fill="#C4806A"/>
+      <ellipse cx="25" cy="45" rx="7" ry="5" fill="#F0D6CB" transform="rotate(30 25 45)"/>
+      <ellipse cx="25" cy="45" rx="3.5" ry="2.5" fill="#C4806A"/>
+      <!-- Stems -->
+      <path d="M60 102 Q70 130 55 160" stroke="#8FA87A" stroke-width="1.5" fill="none" opacity="0.6"/>
+      <path d="M88 105 Q105 125 95 155" stroke="#7A9668" stroke-width="1.2" fill="none" opacity="0.5"/>
+      <!-- Gold dots -->
+      <circle cx="100" cy="52" r="2" fill="#C9A84C" opacity="0.7"/>
+      <circle cx="30" cy="90" r="1.5" fill="#C9A84C" opacity="0.6"/>
+      <circle cx="140" cy="100" r="1.5" fill="#C9A84C" opacity="0.5"/>
+    </g>
+  </svg>
+
+  <!-- Floral bottom-right -->
+  <svg class="cover-floral-bottom" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g opacity="0.9">
+      <ellipse cx="60" cy="80" rx="28" ry="22" fill="#E8C4B8" transform="rotate(-20 60 80)"/>
+      <ellipse cx="68" cy="72" rx="22" ry="18" fill="#DFB0A0" transform="rotate(-10 68 72)"/>
+      <ellipse cx="62" cy="75" rx="14" ry="11" fill="#D4A090"/>
+      <ellipse cx="60" cy="76" rx="7" ry="5.5" fill="#C4806A"/>
+      <ellipse cx="38" cy="74" rx="12" ry="7" fill="#F0D6CB" transform="rotate(-40 38 74)" opacity="0.8"/>
+      <ellipse cx="82" cy="66" rx="12" ry="7" fill="#F0D6CB" transform="rotate(20 82 66)" opacity="0.8"/>
+      <ellipse cx="50" cy="56" rx="12" ry="7" fill="#F0D6CB" transform="rotate(-70 50 56)" opacity="0.8"/>
+      <ellipse cx="70" cy="96" rx="12" ry="7" fill="#F0D6CB" transform="rotate(10 70 96)" opacity="0.8"/>
+      <ellipse cx="120" cy="40" rx="16" ry="13" fill="#E8D5A3" transform="rotate(15 120 40)"/>
+      <ellipse cx="123" cy="37" rx="10" ry="8" fill="#D4AF37" opacity="0.6"/>
+      <ellipse cx="121" cy="39" rx="6" ry="4.5" fill="#C9A84C" opacity="0.7"/>
+      <ellipse cx="90" cy="115" rx="22" ry="9" fill="#8FA87A" transform="rotate(-35 90 115)" opacity="0.7"/>
+      <ellipse cx="40" cy="110" rx="20" ry="8" fill="#7A9668" transform="rotate(20 40 110)" opacity="0.6"/>
+      <ellipse cx="115" cy="80" rx="18" ry="7" fill="#8FA87A" transform="rotate(-55 115 80)" opacity="0.5"/>
+      <ellipse cx="145" cy="70" rx="8" ry="6" fill="#F0D6CB" transform="rotate(-20 145 70)"/>
+      <ellipse cx="145" cy="70" rx="4" ry="3" fill="#C4806A"/>
+      <ellipse cx="25" cy="45" rx="7" ry="5" fill="#F0D6CB" transform="rotate(30 25 45)"/>
+      <ellipse cx="25" cy="45" rx="3.5" ry="2.5" fill="#C4806A"/>
+      <path d="M60 102 Q70 130 55 160" stroke="#8FA87A" stroke-width="1.5" fill="none" opacity="0.6"/>
+      <circle cx="100" cy="52" r="2" fill="#C9A84C" opacity="0.7"/>
+      <circle cx="30" cy="90" r="1.5" fill="#C9A84C" opacity="0.6"/>
+    </g>
+  </svg>
+
+  <div class="cover-line"></div>
+  <div class="cover-label">Wedding Invitation</div>
+
+  <div class="cover-names">
+    Min-jun<br>
+    <span style="font-size:32px; color: var(--gold); font-style:italic;">&amp;</span><br>
+    Seo-yeon
+  </div>
+
+  <div class="cover-names-kr">김민준 · 이서연</div>
+
+  <div class="cover-divider">
+    <div class="gold-ornament-diamond"></div>
+  </div>
+
+  <div class="cover-date">
+    2026년 9월 12일 토요일<br>
+    오후 2시<br>
+    그랜드 인터컨티넨탈 서울 파르나스
+  </div>
+
+  <div class="cover-scroll">
+    <span class="cover-scroll-arrow">↓</span>
+  </div>
+</div>
+
+<!-- ══ INVITATION TEXT ══ -->
+<section>
+  <div class="floral-divider">
+    <svg width="160" height="32" viewBox="0 0 160 32" fill="none">
+      <line x1="0" y1="16" x2="55" y2="16" stroke="#E8D5A3" stroke-width="0.8"/>
+      <circle cx="65" cy="16" r="3" fill="#C9A84C" opacity="0.6"/>
+      <circle cx="80" cy="16" r="4.5" fill="#C9A84C" opacity="0.8"/>
+      <circle cx="95" cy="16" r="3" fill="#C9A84C" opacity="0.6"/>
+      <line x1="105" y1="16" x2="160" y2="16" stroke="#E8D5A3" stroke-width="0.8"/>
+    </svg>
+  </div>
+
+  <p class="invitation-quote">
+    "사랑은 오래 참고<br>사랑은 온유하며"
+  </p>
+
+  <p class="invitation-text">
+    서로를 향한 마음이 모여<br>
+    하나의 약속이 되는 날,<br>
+    두 사람이 평생의 동반자로<br>
+    새로운 출발을 합니다.<br><br>
+    바쁘신 중에도 걸음하시어<br>
+    아름다운 시작을 함께 축복해 주시면<br>
+    더없이 큰 기쁨이 되겠습니다.
+  </p>
+
+  <div class="floral-divider" style="margin-top: 36px;">
+    <svg width="160" height="32" viewBox="0 0 160 32" fill="none">
+      <line x1="0" y1="16" x2="55" y2="16" stroke="#E8D5A3" stroke-width="0.8"/>
+      <circle cx="65" cy="16" r="3" fill="#C9A84C" opacity="0.6"/>
+      <circle cx="80" cy="16" r="4.5" fill="#C9A84C" opacity="0.8"/>
+      <circle cx="95" cy="16" r="3" fill="#C9A84C" opacity="0.6"/>
+      <line x1="105" y1="16" x2="160" y2="16" stroke="#E8D5A3" stroke-width="0.8"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ══ COUPLE ══ -->
+<section>
+  <div class="section-label">The Couple</div>
+
+  <div class="couple-wrap">
+    <div class="couple-card">
+      <div class="couple-role">Groom · 신랑</div>
+      <div class="couple-name-en">Kim Min-jun</div>
+      <div class="couple-name-kr">김 민 준</div>
+      <div class="couple-family">
+        아버지 김태호 · 어머니 박수진의<br>
+        장남
+      </div>
+    </div>
+
+    <div class="couple-separator">
+      <svg width="80" height="40" viewBox="0 0 80 40" fill="none">
+        <path d="M40 8 C28 8 20 16 20 24 C20 32 28 38 40 38 C52 38 60 32 60 24 C60 16 52 8 40 8Z" fill="none" stroke="#E8D5A3" stroke-width="0.8"/>
+        <path d="M40 12 C30 12 24 18 24 24 C24 30 30 34 40 34 C50 34 56 30 56 24 C56 18 50 12 40 12Z" fill="none" stroke="#C9A84C" stroke-width="0.5"/>
+        <text x="40" y="28" text-anchor="middle" fill="#C9A84C" font-family="Cormorant Garamond, serif" font-size="18" font-style="italic">♥</text>
+      </svg>
+    </div>
+
+    <div class="couple-card">
+      <div class="couple-role">Bride · 신부</div>
+      <div class="couple-name-en">Lee Seo-yeon</div>
+      <div class="couple-name-kr">이 서 연</div>
+      <div class="couple-family">
+        아버지 이재원 · 어머니 최미경의<br>
+        장녀
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DATE & VENUE ══ -->
+<section>
+  <div class="section-label">Date &amp; Venue</div>
+
+  <div class="date-box">
+    <div style="font-family:'EB Garamond',serif; font-size:11px; letter-spacing:5px; color:var(--gold-dark); margin-bottom:20px;">SEPTEMBER</div>
+    <div class="date-main">12</div>
+    <div style="font-family:'Cormorant Garamond',serif; font-size:13px; letter-spacing:4px; color:var(--gold-dark); margin-top:4px;">2026</div>
+    <div class="date-sub">
+      토요일 · Saturday<br>
+      오후 2시 · 2:00 PM
+    </div>
+  </div>
+
+  <div class="countdown-wrap" id="countdown">
+    <div class="countdown-item">
+      <div class="countdown-num" id="cd-days">—</div>
+      <div class="countdown-label">DAYS</div>
+    </div>
+    <div class="countdown-sep">:</div>
+    <div class="countdown-item">
+      <div class="countdown-num" id="cd-hours">—</div>
+      <div class="countdown-label">HOURS</div>
+    </div>
+    <div class="countdown-sep">:</div>
+    <div class="countdown-item">
+      <div class="countdown-num" id="cd-mins">—</div>
+      <div class="countdown-label">MINS</div>
+    </div>
+  </div>
+
+  <div class="gold-ornament">
+    <div class="gold-ornament-line"></div>
+    <div class="gold-ornament-diamond"></div>
+    <div class="gold-ornament-line"></div>
+  </div>
+
+  <div class="venue-info">
+    <div class="venue-name">그랜드 인터컨티넨탈 서울 파르나스</div>
+    <div class="venue-hall">그랜드 볼룸 · Grand Ballroom</div>
+    <div class="venue-address">
+      서울특별시 강남구 테헤란로 521<br>
+      (삼성동, COEX 인근)
+    </div>
+    <a href="https://map.kakao.com/link/search/그랜드인터컨티넨탈서울파르나스" target="_blank" class="map-btn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+        <circle cx="12" cy="9" r="2.5"/>
+      </svg>
+      오시는 길 보기
+    </a>
+  </div>
+
+  <div style="margin-top: 36px; padding: 24px; background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.2); border-radius: 2px; font-size: 12px; line-height: 2.2; color: var(--brown-light);">
+    <div style="font-size:10px; letter-spacing:4px; color:var(--gold-dark); margin-bottom:14px;">DIRECTIONS · 오시는 길</div>
+    🚇 <strong style="font-weight:500;">지하철</strong> 2호선 삼성역 6번 출구 (도보 5분)<br>
+    🚌 <strong style="font-weight:500;">버스</strong> 강남구청역 하차<br>
+    🚗 <strong style="font-weight:500;">주차</strong> COEX 주차장 이용 가능
+  </div>
+</section>
+
+<!-- ══ GALLERY ══ -->
+<section style="padding-left:0;padding-right:0;padding-bottom:0;">
+  <div style="padding: 0 28px 24px;">
+    <div class="section-label">Gallery</div>
+    <div style="text-align:center; font-family:'Cormorant Garamond',serif; font-size:20px; font-style:italic; color:var(--brown-light); font-weight:300;">우리의 이야기</div>
+  </div>
+
+  <div class="gallery-grid" style="gap:3px;">
+    <!-- 상단 대표 사진 (가로 전체) -->
+    <div class="gallery-item wide" style="transition-delay:0s;">
+      <img src="사진12.jpg" alt="웨딩 사진" loading="lazy">
+      <div class="gallery-overlay"></div>
+    </div>
+
+    <!-- 중단 두 장 나란히 -->
+    <div class="gallery-item square" style="transition-delay:0.15s;">
+      <img src="사진14.jpg" alt="웨딩 사진" loading="lazy">
+      <div class="gallery-overlay"></div>
+    </div>
+    <div class="gallery-item square" style="transition-delay:0.25s;">
+      <img src="사진17.jpg" alt="웨딩 사진" loading="lazy">
+      <div class="gallery-overlay"></div>
+    </div>
+
+    <!-- 하단 대표 사진 (가로 전체) -->
+    <div class="gallery-item tall" style="transition-delay:0.35s;">
+      <img src="사진18.jpg" alt="웨딩 사진" loading="lazy">
+      <div class="gallery-overlay"></div>
+    </div>
+  </div>
+
+  <!-- 골드 하단 라인 -->
+  <div style="height:3px; background: linear-gradient(to right, transparent, var(--gold-light), transparent);"></div>
+</section>
+
+<!-- ══ ACCOUNT INFO ══ -->
+<section>
+  <div class="section-label">마음 전하실 곳</div>
+  <div style="text-align:center; font-size:13px; color:var(--brown-light); margin-bottom:28px; line-height:2; letter-spacing:1px;">
+    직접 오시기 어려우신 분들을 위해<br>
+    계좌번호를 안내드립니다.
+  </div>
+
+  <div class="account-tab">
+    <button class="account-tab-btn active" onclick="switchTab(this,'groom')">신랑측</button>
+    <button class="account-tab-btn" onclick="switchTab(this,'bride')">신부측</button>
+  </div>
+
+  <div class="account-pane active" id="pane-groom">
+    <div class="account-row">
+      <span class="account-key">예금주</span>
+      <span class="account-val">김태호 (신랑 아버지)</span>
+    </div>
+    <div class="account-row">
+      <span class="account-key">은행</span>
+      <span class="account-val">신한은행</span>
+    </div>
+    <div class="account-row">
+      <span class="account-key">계좌번호</span>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span class="account-val" id="groom-acc">110-123-456789</span>
+        <button class="copy-btn" onclick="copyAcc('groom-acc')">복사</button>
+      </div>
+    </div>
+    <div class="account-row">
+      <span class="account-key">예금주</span>
+      <span class="account-val">김민준 (신랑)</span>
+    </div>
+    <div class="account-row">
+      <span class="account-key">은행</span>
+      <span class="account-val">카카오뱅크</span>
+    </div>
+    <div class="account-row">
+      <span class="account-key">계좌번호</span>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span class="account-val" id="groom-acc2">3333-01-2345678</span>
+        <button class="copy-btn" onclick="copyAcc('groom-acc2')">복사</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="account-pane" id="pane-bride">
+    <div class="account-row">
+      <span class="account-key">예금주</span>
+      <span class="account-val">이재원 (신부 아버지)</span>
+    </div>
+    <div class="account-row">
+      <span class="account-key">은행</span>
+      <span class="account-val">국민은행</span>
+    </div>
+    <div class="account-row">
+      <span class="account-key">계좌번호</span>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span class="account-val" id="bride-acc">12-345678-90-123</span>
+        <button class="copy-btn" onclick="copyAcc('bride-acc')">복사</button>
+      </div>
+    </div>
+    <div class="account-row">
+      <span class="account-key">예금주</span>
+      <span class="account-val">이서연 (신부)</span>
+    </div>
+    <div class="account-row">
+      <span class="account-key">은행</span>
+      <span class="account-val">토스뱅크</span>
+    </div>
+    <div class="account-row">
+      <span class="account-key">계좌번호</span>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span class="account-val" id="bride-acc2">1000-1234-5678</span>
+        <button class="copy-btn" onclick="copyAcc('bride-acc2')">복사</button>
+      </div>
+    </div>
+  </div>
+  <div class="copy-success" id="copy-msg"></div>
+</section>
+
+<!-- ══ RSVP ══ -->
+<div class="rsvp-wrap">
+  <!-- Floral decoration -->
+  <svg style="position:absolute;top:24px;left:50%;transform:translateX(-50%);opacity:0.15" width="200" height="40" viewBox="0 0 200 40" fill="none">
+    <line x1="0" y1="20" x2="70" y2="20" stroke="#C9A84C" stroke-width="0.8"/>
+    <circle cx="82" cy="20" r="4" fill="#C9A84C"/>
+    <circle cx="100" cy="20" r="6" fill="#C9A84C"/>
+    <circle cx="118" cy="20" r="4" fill="#C9A84C"/>
+    <line x1="130" y1="20" x2="200" y2="20" stroke="#C9A84C" stroke-width="0.8"/>
+  </svg>
+
+  <div class="rsvp-title">참석 여부 알림</div>
+  <div class="rsvp-sub">RSVP · 9월 1일까지</div>
+
+  <div>
+    <a href="tel:010-1234-5678" class="rsvp-btn primary">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+      </svg>
+      신랑에게 연락하기
+    </a>
+    <a href="tel:010-9876-5432" class="rsvp-btn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+      </svg>
+      신부에게 연락하기
+    </a>
+  </div>
+  <p class="rsvp-note">
+    참석 여부를 미리 알려주시면<br>
+    준비에 큰 도움이 됩니다.
+  </p>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-names">Kim Min-jun &amp; Lee Seo-yeon</div>
+  2026. 09. 12<br>
+  함께해 주셔서 감사합니다.
+</footer>
+
+<script>
+  // Scroll animation observer
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll(
+    '.section-label, .invitation-text, .invitation-quote, .couple-card, .date-box, .countdown-wrap, .venue-info, .gallery-item'
+  ).forEach(el => obs.observe(el));
+
+  // Countdown
+  function updateCountdown() {
+    const target = new Date('2026-09-12T14:00:00+09:00');
+    const now = new Date();
+    const diff = target - now;
+    if (diff <= 0) {
+      document.getElementById('cd-days').textContent = '0';
+      document.getElementById('cd-hours').textContent = '00';
+      document.getElementById('cd-mins').textContent = '00';
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    document.getElementById('cd-days').textContent = d;
+    document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 60000);
+
+  // Tab switch
+  function switchTab(btn, who) {
+    document.querySelectorAll('.account-tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.account-pane').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('pane-' + who).classList.add('active');
+  }
+
+  // Copy account
+  function copyAcc(id) {
+    const text = document.getElementById(id).textContent.trim();
+    navigator.clipboard.writeText(text).then(() => {
+      const msg = document.getElementById('copy-msg');
+      msg.textContent = '✓  계좌번호가 복사되었습니다';
+      setTimeout(() => msg.textContent = '', 2500);
+    });
+  }
+</script>
+</body>
+</html>
